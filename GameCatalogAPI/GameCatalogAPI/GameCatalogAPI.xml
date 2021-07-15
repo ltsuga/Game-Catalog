@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameCatalogAPI</name>
+    </assembly>
+    <members>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.Obtain(System.Int32,System.Int32)">
+            <summary>
+            List all games in paging format
+            </summary>
+            <remarks>
+            Paging reduces resources consumption
+            </remarks>
+            <param name="pagina">Min: 1</param>
+            <param name="quantidade">Rows per page. Min: 1 - Max: 50</param>
+            <response code="200">Game list.</response>
+            <response code="204">No games found!</response>   
+        </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.Obtain(System.Guid)">
+            <summary>
+            Search game using Id
+            </summary>
+            <param name="idJogo">Game Id</param>
+            <response code="200">Game found.</response>
+            <response code="204">Game not found!</response> 
+        </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.InsertGame(GameCatalogAPI.InputModel.GameInputModel)">
+            <summary>
+            Insert game 
+            </summary>
+            <param name="gameInputModel">Game data</param>
+            <response code="200">Game added successfully.</response>
+            <response code="422">Game and Publisher already filled.</response> 
+        </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.UpdateGame(System.Guid,GameCatalogAPI.InputModel.GameInputModel)">
+            <summary>
+            Update game info
+            </summary>
+            /// <param name="idJogo">Game Id</param>
+            <param name="gameInputModel">Update info</param>
+            <response code="200">Updated successfully.</response>
+            <response code="404">Game Id not found.</response>   
+        </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.UpdateGame(System.Guid,System.Double)">
+            <summary>
+            Update game price
+            </summary>
+            /// <param name="idJogo">Game Id</param>
+            <param name="preco">New price</param>
+            <response code="200">Price successfully changed.</response>
+            <response code="404">Game Id not found!</response>  
+        </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.DeleteGame(System.Guid)">
+            <summary>
+            Delete game
+            </summary>
+            /// <param name="idJogo">Game Id</param>
+            <response code="200">Game deleted successfully.</response>
+            <response code="404">Game Id not found!</response>  
+        </member>
+    </members>
+</doc>
