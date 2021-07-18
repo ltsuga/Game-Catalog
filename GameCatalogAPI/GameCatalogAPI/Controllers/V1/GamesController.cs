@@ -32,9 +32,9 @@ namespace GameCatalogAPI.Controllers.V1
         /// <response code="200">Game list.</response>
         /// <response code="204">No games found!</response>   
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameViewModel>>> Obtain([FromQuery,Range(1,int.MaxValue)] int pagina = 1, [FromQuery, Range(1, 50)] int quantidade = 5)
+        public async Task<ActionResult<IEnumerable<GameViewModel>>> Obtain([FromQuery, Range(1, int.MaxValue)] int pagina = 1, [FromQuery, Range(1, 50)] int quantidade = 5)
         {
-            
+
             var jogos = await _gameService.Obtain(pagina, quantidade);
 
             if (jogos.Count() == 0)
@@ -42,6 +42,25 @@ namespace GameCatalogAPI.Controllers.V1
 
             return Ok(jogos);
         }
+
+        /// <summary>
+        /// List games by year published
+        /// </summary>
+        /// <param name="year">yyyy format</param>
+        /// <response code="200">Game list.</response>
+        /// <response code="204">No games found!</response>   
+        [HttpGet, Route("{year}")]
+        public async Task<ActionResult<IEnumerable<GameViewModel>>> YearPublished(string year)
+        {
+
+            var jogos = await _gameService.YearPublished(year);
+
+            if (jogos.Count() == 0)
+                return NoContent();
+
+            return Ok(jogos);
+        }
+        
 
         /// <summary>
         /// Search game using Id

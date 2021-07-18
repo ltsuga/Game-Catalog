@@ -16,6 +16,14 @@
             <response code="200">Game list.</response>
             <response code="204">No games found!</response>   
         </member>
+        <member name="M:GameCatalogAPI.Controllers.V1.GamesController.YearPublished(System.String)">
+            <summary>
+            List games by year published
+            </summary>
+            <param name="year">yyyy format</param>
+            <response code="200">Game list.</response>
+            <response code="204">No games found!</response>   
+        </member>
         <member name="M:GameCatalogAPI.Controllers.V1.GamesController.Obtain(System.Guid)">
             <summary>
             Search game using Id
